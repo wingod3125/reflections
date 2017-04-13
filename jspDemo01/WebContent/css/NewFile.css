@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+table {
+	border: 1px solid;
+}
+
+a {
+	text-decoration: none;
+}
