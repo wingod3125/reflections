@@ -10,32 +10,6 @@
 <body>
 	<p>
 		<%
-		    if (application.getAttribute("idList") == null) {
-		        List<String> idList = new ArrayList<String>();
-		        idList.add(session.getId());
-		        application.setAttribute("idList", idList);
-		    } else {
-		        List<String> idList = (ArrayList<String>) application
-		                .getAttribute("idList");
-		        if (idList.indexOf(session.getId()) == -1) {
-		            //out.print("not found");
-		            idList.add(session.getId());
-		            application.setAttribute("idList", idList);
-		        } else {
-		            //out.print("found");
-		        }
-		    }
-		    List<String> idList = (List<String>) application
-		            .getAttribute("idList");
-		    out.print("访问列表：<br>");
-		    for (String id : idList) {
-		        out.print(id + "<br>");
-		    }
-		    out.print("访问过本网站的人数" + idList.size());
-		%>
-	</p>
-	<p>
-		<%
 		    out.print("<br>在线人数:" + CountListener.getCount());
 		%>
 	</p>
@@ -58,8 +32,8 @@
 		<a href="StudentSer">后台学员列表</a>
 	</p>
 	<p>
-        <a href="PageSer">分页查询</a>
-    </p>
+		<a href="PageSer">分页查询</a>
+	</p>
 	<p>
 		<a href="history.jsp">历史上的今天</a>
 	</p>
@@ -81,7 +55,6 @@
 	        if (i % 400 == 0 || (i % 4 == 0 && i % 100 != 0)) {
 	            out.println(i + "<br>");
 	            count++;
-
 	        }
 	    }
 	%>

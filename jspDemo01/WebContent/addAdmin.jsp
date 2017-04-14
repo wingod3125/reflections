@@ -64,7 +64,7 @@
 				id="span"></span>
 		</p>
 		<p>
-			密&nbsp;码：<input type="text" name="p"><span id="span"></span>
+			密&nbsp;码：<input type="text" name="password"><span id="span"></span>
 		</p>
 	</form>
 </body>

@@ -2,6 +2,11 @@ package dao;
 
 import java.sql.*;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 /**
  * 这个类负责所有与数据库的交互
  * 
@@ -10,33 +15,25 @@ import java.sql.*;
  */
 public class BaseDao {
     /**
-     * 静态方法加载驱动
-     */
-    static {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 创建数据库连接，并返回连接
+     * 创建数据库连接，并返回连接，使用连接池
      * 
      * @return 数据库连接
      */
     public static Connection getConnection() {
         Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/1219?characterEncoding=utf-8";
-        String name = "root";
-        String pwd = "123123";
         try {
-            conn = DriverManager.getConnection(url, name, pwd);
+            // 初始化上下文
+            Context ct = new InitialContext();
+            // 通过上下文对象获取连接池的数据对象,注意：java:comp/env/是固定的写法
+            DataSource ds = (DataSource) ct.lookup("java:comp/env/conn1219");
+            // 从连接池中取出一个连接对象
+            conn = ds.getConnection();
+        } catch (NamingException e) {
+            e.printStackTrace();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
         return conn;
     }
 

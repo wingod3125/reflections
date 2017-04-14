@@ -76,4 +76,12 @@
   <listener>
     <listener-class>listener.CountListener</listener-class>
   </listener>
+   <servlet>
+    <servlet-name>ProvinceSer</servlet-name>
+    <servlet-class>servlet.ProvinceSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProvinceSer</servlet-name>
+    <url-pattern>/ProvinceSer</url-pattern>
+  </servlet-mapping>
 </web-app>
